@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="350"
+		     Width="350" Height="350"
+			 MinWidth="350" MinHeight="350"
+			 MaxWidth="350" MaxHeight="350"
+             x:Class="Lab_7.Views.AddMenu"
+			 Title ="Добавить нового студента"
+			 Icon="/Assets/logo.ico">
+	
+
+	<StackPanel Orientation="Vertical"
+				Margin="0,16,0,0"
+				HorizontalAlignment="Center"
+				Spacing="16">
+		<TextBox Grid.Row="0" Grid.Column="0" Watermark="ФИО студента" Text="{Binding NewStudent.Fio}" UseFloatingWatermark="True" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextAlignment="Center"/>
+		<TextBox Grid.Row="0" Grid.Column="0" Watermark="Оценка по Визуальному Программированию" Text="{Binding NewStudent[0]}" UseFloatingWatermark="True" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextAlignment="Center"/>
+		<TextBox Grid.Row="0" Grid.Column="0" Watermark="Оценка по Архитектре ЭВМ" Text="{Binding NewStudent[1]}" UseFloatingWatermark="True" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextAlignment="Center"/>
+		<TextBox Grid.Row="0" Grid.Column="0" Watermark="Оценка по Физической Культуре" Text="{Binding NewStudent[2]}" UseFloatingWatermark="True" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextAlignment="Center"/>
+		<Button Name="Ok" Classes="button" Grid.Row="8" Content="Добавить студента" HorizontalAlignment="Center"/>
+		<Button Name="Cancel" Classes="button" Grid.Row="9" Content="Отмена" HorizontalAlignment="Center" />
+	</StackPanel>
+	
+  
+</UserControl>

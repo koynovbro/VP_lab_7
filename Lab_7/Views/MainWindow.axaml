@@ -1,0 +1,64 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Lab_7.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:model="using:Lab_7.Models"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+		Width="1000" Height="700"
+		MinWidth="1000" MinHeight="700"
+        x:Class="Lab_7.Views.MainWindow"
+        Icon="/Assets/logo.ico"
+        Title="lab 7">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid RowDefinitions="40,*,100,50" ColumnDefinitions="*,*">
+		<DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+			<Menu DockPanel.Dock="Top" VerticalAlignment="Top">
+				<MenuItem Header="_File">
+					<MenuItem Name ="Save" Header="_Save"/>
+					<MenuItem Name="Load" Header="_Load"/>			
+					<Separator/>
+					<MenuItem Name="Exit" Header="_Exit"/>
+				</MenuItem>
+				<MenuItem  Name="About" Header="_About"/>
+			</Menu>
+		</DockPanel>
+		<DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="MyDataGrid" Items="{Binding Items}" AutoGenerateColumns="False">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="ФИО" Binding="{Binding Fio}"/>
+				<DataGridTextColumn Header="Визуальное Программирование" Binding="{Binding [0]}"/>
+				<DataGridTextColumn Header="Архитектура ЭВМ" Binding="{Binding [1]}"/>
+				<DataGridTextColumn Header="Физическая Культура" Binding="{Binding [2]}"/>
+				<DataGridTemplateColumn IsReadOnly="True" Header="Средний балл" SortMemberPath="SrRate" CanUserSort="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+						<DataTemplate DataType="model:Students">
+							<TextBlock Text="{Binding SrRate}" Background="{Binding Color}"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridCheckBoxColumn Binding="{Binding Check}" Header="Отметить"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+			
+				<TextBox IsReadOnly="True" Grid.Row="0" Grid.Column="0" TextAlignment="Center" >Визуальное Программирование</TextBox>
+				<TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="0" Background="{Binding Color[0]}" Text="{Binding [0]}" TextAlignment="Center"/>
+				<TextBox IsReadOnly="True" Grid.Row="0" Grid.Column="1" TextAlignment="Center">Архитектура ЭВМ</TextBox>
+				<TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="1" Background="{Binding Color[1]}" Text="{Binding [1]}" TextAlignment="Center"/>
+				<TextBox IsReadOnly="True" Grid.Row="0" Grid.Column="2" TextAlignment="Center" >Физическая Культура</TextBox>
+				<TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="2" Background="{Binding Color[2]}" Text="{Binding [2]}" TextAlignment="Center" />
+		</Grid>
+		
+		<Button Grid.Row="3" Grid.Column="0" Name ="Add" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+			<Image Source="/Assets/add.ico"  />
+		</Button>
+		<Button  Grid.Row="3" Grid.Column="1" Name ="Delete" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+			<Image Source="/Assets/trash.ico" />
+		</Button>
+	</Grid>
+
+</Window>
